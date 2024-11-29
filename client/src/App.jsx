@@ -6,14 +6,19 @@ import Campaigns from "./pages/Campaigns";
 import Insights from "./pages/Insights";
 import Landing from "./pages/Landing";
 import AuthPage from "./pages/AuthPage";
+import Dashboard from "./pages/Dashboard";
+import CreateCampaign from "./pages/CreateCampaign";
+
 const App = () => {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50 text-gray-900">
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/create-campaign" element={<CreateCampaign />} />
           <Route path="/campaigns" element={<Campaigns />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/auth" element={<AuthPage />} />
