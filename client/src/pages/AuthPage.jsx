@@ -4,48 +4,48 @@ const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+    <div className="h-screen flex items-center justify-center bg-gray-900">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center text-white mb-6">
           {isLogin ? "Login to MailZapp" : "Create an Account"}
         </h2>
 
         <form>
           {!isLogin && (
             <div className="mb-4">
-              <label className="block text-gray-700 mb-2" htmlFor="name">
+              <label className="block text-gray-300 mb-2" htmlFor="name">
                 Name
               </label>
               <input
                 id="name"
                 type="text"
-                className="w-full border-gray-300 rounded-lg shadow-sm p-3"
+                className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
                 placeholder="Your Name"
               />
             </div>
           )}
 
           <div className="mb-4">
-            <label className="block text-gray-700 mb-2" htmlFor="email">
+            <label className="block text-gray-300 mb-2" htmlFor="email">
               Email
             </label>
             <input
               id="email"
               type="email"
-              className="w-full border-gray-300 rounded-lg shadow-sm p-3"
+              className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
               placeholder="Your Email"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 mb-2" htmlFor="password">
+            <label className="block text-gray-300 mb-2" htmlFor="password">
               Password
             </label>
             <input
               id="password"
-              type="password"
-              className="w-full border-gray-300 rounded-lg shadow-sm p-3"
-              placeholder="Your Password"
+                type="password"
+                className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
+                placeholder="Your Password"
             />
           </div>
 
@@ -60,7 +60,7 @@ const AuthPage = () => {
         <div className="text-center mt-4">
           <button
             onClick={() => setIsLogin(!isLogin)}
-            className="text-blue-600 hover:underline"
+            className="text-blue-400 hover:underline"
           >
             {isLogin
               ? "Don't have an account? Sign Up"

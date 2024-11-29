@@ -1,18 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+
+  // Hide Navbar on Landing Page
+  if (location.pathname === "/") {
+    return null;
+  }
+
   return (
-    <nav className="bg-blue-600 text-white shadow-md p-4">
+    <header className="bg-blue-600 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold">MailZapp</Link>
-        <div className="flex gap-4">
-          <Link to="/" className="hover:underline">Home</Link>
-          <Link to="/campaigns" className="hover:underline">Campaigns</Link>
-          <Link to="/insights" className="hover:underline">Insights</Link>
-        </div>
+        <h1 className="text-2xl font-bold">MailZapp</h1>
+        <nav className="space-x-4">
+          <a href="/home" className="hover:underline">
+            Home
+          </a>
+          <a href="/campaigns" className="hover:underline">
+            Campaigns
+          </a>
+          <a href="/insights" className="hover:underline">
+            Insights
+          </a>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 
