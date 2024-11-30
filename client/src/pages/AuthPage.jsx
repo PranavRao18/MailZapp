@@ -1,7 +1,50 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    const url = isLogin
+      ? "http://localhost:3000/auth/login"
+      : "http://localhost:3000/auth/register";
+
+    const body = isLogin
+      ? { email: formData.email, password: formData.password }
+      : formData;
+
+    try {
+      const response = await axios.post(url, body, {
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = response.data;
+
+      // Handle login success
+      if (isLogin) {
+        localStorage.setItem("token", data.token); // Store JWT token
+        navigate("/dashboard"); // Redirect to dashboard
+      } else {
+        alert("Registration successful! Please log in.");
+        setIsLogin(true); // Switch to login mode
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Something went wrong");
+    }
+  };
 
   return (
     <div className="h-screen flex items-center justify-center bg-gray-900">
@@ -10,7 +53,9 @@ const AuthPage = () => {
           {isLogin ? "Login to MailZapp" : "Create an Account"}
         </h2>
 
-        <form>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
+        <form onSubmit={handleSubmit}>
           {!isLogin && (
             <div className="mb-4">
               <label className="block text-gray-300 mb-2" htmlFor="name">
@@ -19,6 +64,8 @@ const AuthPage = () => {
               <input
                 id="name"
                 type="text"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
                 placeholder="Your Name"
               />
@@ -32,6 +79,8 @@ const AuthPage = () => {
             <input
               id="email"
               type="email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
               placeholder="Your Email"
             />
@@ -44,6 +93,8 @@ const AuthPage = () => {
             <input
               id="password"
                 type="password"
+              value={formData.password}
+              onChange={handleChange}
                 className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
                 placeholder="Your Password"
             />

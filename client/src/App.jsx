@@ -6,6 +6,9 @@ import Campaigns from "./pages/Campaigns";
 import Insights from "./pages/Insights";
 import Landing from "./pages/Landing";
 import AuthPage from "./pages/AuthPage";
+import Dashboard from "./pages/Dashboard";
+import CreateCampaign from "./pages/CreateCampaign";
+
 import About from "./pages/About";
 
 const App = () => {
@@ -20,10 +23,12 @@ const App = () => {
           path="*"
           element={
             <div className="min-h-screen bg-gray-50 text-gray-900">
-              {/* <Navbar /> */}
+              {/* {/* <Navbar /> */} */}
               <Routes>
                 <Route path="/home" element={<Home />} />
-                <Route path="/campaigns" element={<Campaigns />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/create-campaign" element={<CreateCampaign />} />
+          <Route path="/campaigns" element={<Campaigns />} />
                 <Route path="/insights" element={<Insights />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/about" element={<About />} />
