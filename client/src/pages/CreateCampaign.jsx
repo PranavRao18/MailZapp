@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosInstance";
-import { decode } from "jwt-decode";
 
 
 const CreateCampaign = () => {
@@ -54,16 +53,12 @@ const CreateCampaign = () => {
     }
 
     // Get the token from localStorage
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
 
     if (!token) {
       alert("User not authenticated.");
       return;
     }
-
-    // Decode the token to get user information (e.g., userId)
-    const decodedToken = decode(token);
-    const userId = decodedToken.userId; // Assuming userId is in the token
 
     try {
       // Send the token in the headers
@@ -77,7 +72,6 @@ const CreateCampaign = () => {
           subject,
           content: emailContent,
           scheduleDateTime,
-          userId, // Include the user ID
         },
         {
           headers: {

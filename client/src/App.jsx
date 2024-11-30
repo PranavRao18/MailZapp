@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import CreateCampaign from "./pages/CreateCampaign";
 
 import About from "./pages/About";
+import EmailSettings from "./pages/Settings";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
                 <Route path="/insights" element={<Insights />} />
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/settings" element={<EmailSettings />} />
               </Routes>
             </div>
           }
