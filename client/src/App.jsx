@@ -23,7 +23,7 @@ const App = () => {
           path="*"
           element={
             <div className="min-h-screen bg-gray-50 text-gray-900">
-              {/* {/* <Navbar /> */} */}
+               {/* <Navbar /> */} 
               <Routes>
                 <Route path="/home" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
