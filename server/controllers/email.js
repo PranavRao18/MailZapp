@@ -1,3 +1,4 @@
+const Campaign = require('../models/Campaign');
 const User = require('../models/User');
 
 // Save or Update Email Settings
@@ -46,4 +47,17 @@ const getEmailSettings = async (req, res) => {
   }
 };
 
-module.exports = { updateEmailSettings, getEmailSettings };
+const kestraWebhook = async (req, res) => {
+  const campaignId = req.body.campaignId;
+
+  try {
+    const campaign = await Campaign.findByIdAndUpdate(campaignId, { status: "Sent" });
+    console.log('Campaign status updated:', campaign);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error('Error updating campaign status:', error);
+    res.status(500).send('Error updating campaign status.');
+  }
+};
+
+module.exports = { updateEmailSettings, getEmailSettings, kestraWebhook };

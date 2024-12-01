@@ -119,13 +119,13 @@ const Dashboard = () => {
                     </span>
                   </p>
                   <div className="flex justify-end gap-3">
-                    <button
+                    {/* <button
                       onClick={() => alert("View functionality coming soon!")}
                       className="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-md shadow-sm hover:shadow-md transform hover:scale-105 transition duration-200"
                     >
                       <FaEye />
                       View
-                    </button>
+                    </button> */}
                     <button
                       onClick={() => alert("Campaign deleted!")}
                       className="flex items-center gap-2 bg-red-600 text-white px-3 py-2 rounded-md shadow-sm hover:shadow-md transform hover:scale-105 transition duration-200"

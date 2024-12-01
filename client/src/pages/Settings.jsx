@@ -95,7 +95,7 @@ const EmailSettings = () => {
                             className="block text-sm font-medium text-gray-300 mb-1"
                         >
                             <HiLockClosed className="inline mr-2 text-lg text-indigo-500" />
-                            Password
+                            SMTP Password
                         </label>
                         <input
                             type="password"
