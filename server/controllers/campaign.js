@@ -17,12 +17,10 @@ async function triggerKestraFlow(inputData) {
     }
 }
 
-// Create a new campaign
 const createCampaign = async (req, res) => {
     try {
         const { name, recipients, subject, content, scheduleDateTime } = req.body;
 
-        // Validate inputs
         if (!name || !recipients || !subject || !content || !scheduleDateTime) {
             return res.status(400).json({ message: "All required fields must be provided." });
         }
@@ -32,8 +30,6 @@ const createCampaign = async (req, res) => {
         const newCampaign = new Campaign({
             name,
             recipients,
-            // cc,
-            // bcc,
             subject,
             content,
             scheduleDateTime,
@@ -41,15 +37,13 @@ const createCampaign = async (req, res) => {
         });
         await newCampaign.save();
 
-        // Calculate delay in seconds from scheduleDateTime
         const scheduleDate = new Date(scheduleDateTime);
         const currentDate = new Date();
         const delayInSeconds = Math.floor((scheduleDate - currentDate) / 1000);
 
-        // Prepare Kestra flow input data using user's credentials
         const kestraInputData = {
             smtp_email: user.emailSettings.smtpEmail,
-            smtp_password: user.emailSettings.smtpPassword, // Assuming password is securely stored
+            smtp_password: user.emailSettings.smtpPassword,
             recipient: recipients.join(", "),
             subject,
             body: content,
@@ -57,7 +51,6 @@ const createCampaign = async (req, res) => {
             campaign_id: newCampaign._id.toString()
         };
 
-        // Trigger Kestra flow using your chosen method (e.g., Kestra API call)
         await triggerKestraFlow(kestraInputData);
 
         res.status(201).json({ message: "Campaign created successfully.", campaign: newCampaign });
@@ -69,20 +62,14 @@ const createCampaign = async (req, res) => {
 
 const getAllCampaigns = async (req, res) => {
     try {
-        // Fetch campaigns for the logged-in user
         const campaigns = await Campaign.find({ user: req.user._id });
-
-        // Send the campaigns as the response
         return res.status(200).json(campaigns);
     } catch (error) {
         console.error("Error fetching campaigns:", error);
-
-        // Check if headers are already sent before attempting to send a response
         if (!res.headersSent) {
             return res.status(500).json({ message: "Internal server error." });
         }
 
-        // Log a warning if response attempt was made after headers were sent
         console.warn("Attempted to send response after headers sent.");
     }
 };
@@ -96,9 +83,8 @@ const generateAIContent = async (req, res) => {
             return res.status(400).json({ message: "AI prompt is required." });
         }
 
-        // Call to Groq API for AI content generation
         const groqResponse = await axios.post(
-            "https://api.groq.com/openai/v1/chat/completions", // Replace with Groq's AI generation endpoint
+            "https://api.groq.com/openai/v1/chat/completions",
             {
                 messages: [
                     {
@@ -114,11 +100,11 @@ const generateAIContent = async (req, res) => {
             {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${process.env.GROQ_API_KEY}`, // Replace with your Groq API key
+                    Authorization: `Bearer ${process.env.GROQ_API_KEY}`, 
                 },
             }
         );
-        const generatedContent = groqResponse.data.choices[0].message.content; // Assuming Groq returns the generated content in the 'content' field
+        const generatedContent = groqResponse.data.choices[0].message.content;
         res.status(200).json({ content: generatedContent });
 
     } catch (error) {
