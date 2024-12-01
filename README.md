@@ -14,14 +14,11 @@ This documentation will guide you through MailZapp's features, setup instruction
    - [Pay-Per-Use Pricing](#pay-per-use-pricing)
    - [Actionable Insights](#actionable-insights)
    - [Automation with Kestra](#automation-with-kestra)
-3. [⚙️ Tech Stack](#tech-stack)
-4. [🚀 How to Run the Project](#how-to-run-the-project)
+3. [Tech Stack](#tech-stack)
+4. [How to Run the Project](#how-to-run-the-project)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Running the Project](#running-the-project)
-5. [🤝 Contributing](#contributing)
-6. [📄 License](#license)
-7. [📞 Contact Us](#contact-us)
 
 ---
 
@@ -68,7 +65,7 @@ MailZapp is built with modern, reliable technologies that ensure scalability, pe
 
 - **Frontend**: React.js, Tailwind CSS 🌐
 - **Backend**: Node.js, Express.js 🔧
-- **Database**: MongoDB (NoSQL) 💾
+- **Database**: MongoDB 💾
 - **Authentication**: JSON Web Tokens (JWT) 🔐
 - **AI Integration**: Custom AI models for email content generation 🤖
 - **Automation**: **Kestra** (for workflow automation) ⚙️
@@ -116,7 +113,7 @@ Before running **MailZapp** locally, make sure you have the following installed 
 
 ---
 
-## ▶️ Running the Project
+### ▶️ Running the Project
 
 1. **Start the Backend**
    Run the following command in the root directory:
@@ -131,7 +128,7 @@ Before running **MailZapp** locally, make sure you have the following installed 
   This React app will run at http://localhost:3000.
 
 3 **Start Kestra Automation**
-Ensure your Kestra instance is running and properly configured. Refer to the Kestra Documentation for setup details.
+Ensure your Kestra instance is running and properly configured. Refer to the [Kestra Documentation](https://kestra.io/) for setup details.
 
 
 
