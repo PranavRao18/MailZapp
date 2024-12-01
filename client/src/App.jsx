@@ -8,7 +8,7 @@ import Landing from "./pages/Landing";
 import AuthPage from "./pages/AuthPage";
 import Dashboard from "./pages/Dashboard";
 import CreateCampaign from "./pages/CreateCampaign";
-
+import Pricing from "./pages/Pricing"; 
 import About from "./pages/About";
 import EmailSettings from "./pages/Settings";
 
@@ -32,6 +32,7 @@ const App = () => {
           <Route path="/campaigns" element={<Campaigns />} />
                 <Route path="/insights" element={<Insights />} />
                 <Route path="/auth" element={<AuthPage />} />
+                <Route path="/pricing" element={<Pricing />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/settings" element={<EmailSettings />} />
               </Routes>

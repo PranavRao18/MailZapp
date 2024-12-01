@@ -35,9 +35,11 @@ const Landing = () => {
             <a href="#features" className="hover:text-indigo-200 transition duration-200">
               Features
             </a>
-            <a href="#pricing" className="hover:text-indigo-200 transition duration-200">
-              Pricing
-            </a>
+            
+<Link to="/pricing">
+    View Pricing
+</Link>
+
             <a href="#contact" className="hover:text-indigo-200 transition duration-200">
               Contact Us
             </a>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../axiosInstance";
+import { HiOutlineMail, HiLockClosed, HiServer, HiShieldCheck } from "react-icons/hi";
 
 const EmailSettings = () => {
     const [formData, setFormData] = useState({
@@ -20,7 +21,6 @@ const EmailSettings = () => {
                         Authorization: `Bearer ${token}`, // Attach token in Authorization header
                     },
                 });
-                console.log(response.data)
                 if (response.data) {
                     setFormData(response.data.emailSettings);
                 }
@@ -53,24 +53,29 @@ const EmailSettings = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-            <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-6">Email Settings</h2>
+        <div className="min-h-screen bg-gradient-to-r from-gray-800 to-black flex items-center justify-center">
+            <div className="w-full max-w-md bg-gray-700 shadow-lg rounded-lg p-8 transform transition-all duration-500 ease-in-out hover:scale-105">
+                <h2 className="text-3xl font-bold text-center text-white mb-6">Email Settings</h2>
+
                 {message && (
                     <p
-                        className={`text-center text-sm font-medium mb-4 ${message.includes("Failed") ? "text-red-500" : "text-green-500"
-                            }`}
+                        className={`text-center text-sm font-medium mb-4 ${
+                            message.includes("Failed") ? "text-red-500" : "text-green-500"
+                        }`}
                     >
                         {message}
                     </p>
                 )}
-                <form onSubmit={handleSubmit} className="space-y-4">
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Email Input */}
                     <div>
                         <label
                             htmlFor="smtpEmail"
-                            className="block text-sm font-medium text-gray-600 mb-1"
+                            className="block text-sm font-medium text-gray-300 mb-1"
                         >
-                            Email
+                            <HiOutlineMail className="inline mr-2 text-lg text-indigo-500" />
+                            Email Address
                         </label>
                         <input
                             type="email"
@@ -79,14 +84,17 @@ const EmailSettings = () => {
                             value={formData.smtpEmail}
                             onChange={handleChange}
                             required
-                            className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+                            className="w-full border-2 border-gray-600 rounded-md px-4 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                     </div>
+
+                    {/* Password Input */}
                     <div>
                         <label
                             htmlFor="smtpPassword"
-                            className="block text-sm font-medium text-gray-600 mb-1"
+                            className="block text-sm font-medium text-gray-300 mb-1"
                         >
+                            <HiLockClosed className="inline mr-2 text-lg text-indigo-500" />
                             Password
                         </label>
                         <input
@@ -96,14 +104,17 @@ const EmailSettings = () => {
                             value={formData.smtpPassword}
                             onChange={handleChange}
                             required
-                            className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+                            className="w-full border-2 border-gray-600 rounded-md px-4 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                     </div>
+
+                    {/* SMTP Host */}
                     <div>
                         <label
                             htmlFor="smtpHost"
-                            className="block text-sm font-medium text-gray-600 mb-1"
+                            className="block text-sm font-medium text-gray-300 mb-1"
                         >
+                            <HiServer className="inline mr-2 text-lg text-indigo-500" />
                             SMTP Host
                         </label>
                         <input
@@ -112,14 +123,17 @@ const EmailSettings = () => {
                             id="smtpHost"
                             value={formData.smtpHost}
                             onChange={handleChange}
-                            className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+                            className="w-full border-2 border-gray-600 rounded-md px-4 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                     </div>
+
+                    {/* SMTP Port */}
                     <div>
                         <label
                             htmlFor="smtpPort"
-                            className="block text-sm font-medium text-gray-600 mb-1"
+                            className="block text-sm font-medium text-gray-300 mb-1"
                         >
+                            <HiShieldCheck className="inline mr-2 text-lg text-indigo-500" />
                             SMTP Port
                         </label>
                         <input
@@ -128,12 +142,14 @@ const EmailSettings = () => {
                             id="smtpPort"
                             value={formData.smtpPort}
                             onChange={handleChange}
-                            className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
+                            className="w-full border-2 border-gray-600 rounded-md px-4 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                     </div>
+
+                    {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300"
+                        className="w-full bg-indigo-600 text-white rounded-md px-4 py-3 hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     >
                         Save Settings
                     </button>

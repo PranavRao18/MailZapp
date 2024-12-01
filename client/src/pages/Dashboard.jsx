@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axiosInstance from "../axiosInstance"; // Assuming you have an Axios instance configured
+import { useNavigate, Link } from "react-router-dom"; // Import Link for home navigation
+import axiosInstance from "../axiosInstance";
+import { FaCog, FaPlus, FaTrash, FaEye, FaHome } from "react-icons/fa"; // Font Awesome icons
+import { GiCheckMark, GiSandsOfTime } from "react-icons/gi"; // Creative icons
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
         const token = localStorage.getItem("token");
-        if(!token){
-            navigate('/auth')
+        if (!token) {
+          navigate("/auth");
         }
         const response = await axiosInstance.get("/campaigns", {
           headers: {
-            Authorization: `Bearer ${token}`, // Attach token in Authorization header
+            Authorization: `Bearer ${token}`,
           },
         });
         setCampaigns(response.data);
@@ -32,99 +34,112 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div
+      className="min-h-screen bg-black text-gray-200 flex flex-col"
+      style={{
+        backgroundImage: "none", // Fully dark background
+        backgroundColor: "#000000", // Pure black
+      }}
+    >
       {/* Header */}
-      <header className="bg-blue-600 text-white py-4 shadow-lg">
+      <header className="bg-gray-900 py-4 shadow-lg sticky top-0 z-40 border-b border-gray-700">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold">MailZapp Dashboard</h1>
+          <div className="flex items-center gap-4">
+            {/* Home Icon */}
+            <Link to="/" className="text-2xl text-gray-300 hover:text-blue-400">
+              <FaHome />
+            </Link>
+
+            <h1 className="text-3xl font-extrabold tracking-wide flex items-center">
+              <span className="text-blue-400 ml-2">MailZapp</span> Dashboard
+            </h1>
+          </div>
+
           <button
             onClick={() => navigate("/settings")}
-            className="bg-white text-blue-600 px-3 py-2 rounded shadow hover:bg-gray-200 text-sm md:text-base"
+            className="flex items-center gap-2 bg-gray-800 text-gray-300 px-3 py-2 rounded-lg shadow-md hover:bg-gray-700 transform hover:scale-105 transition duration-200"
           >
+            <FaCog />
             Settings
           </button>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-6 flex-1">
+      <main className="container mx-auto px-4 py-8 flex-1">
         <div className="flex flex-col md:flex-row justify-between items-center mb-6">
-          <h2 className="text-lg md:text-xl font-bold text-gray-800 mb-4 md:mb-0">
-            Your Campaigns
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-100 flex items-center gap-2">
+            📋 Your Campaigns
           </h2>
           <button
             onClick={() => navigate("/create-campaign")}
-            className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700"
+            className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transform hover:scale-105 transition duration-200"
           >
-            + New Campaign
+            <FaPlus />
+            New Campaign
           </button>
         </div>
 
         {/* Campaign List */}
-        <div className="bg-white shadow rounded-lg p-4">
+        <div className="bg-gray-900 shadow-lg rounded-lg p-6 border border-gray-700">
           {loading ? (
-            <p className="text-gray-500 text-center">Loading campaigns...</p>
+            <p className="text-gray-400 text-center animate-pulse">
+              ⏳ Loading campaigns...
+            </p>
           ) : error ? (
-            <p className="text-red-500 text-center">{error}</p>
+            <p className="text-red-400 text-center">❌ {error}</p>
           ) : campaigns.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="table-auto w-full border-collapse">
-                <thead>
-                  <tr className="text-left bg-gray-200">
-                    <th className="p-3 text-sm md:text-base">Campaign Name</th>
-                    <th className="p-3 text-sm md:text-base">Status</th>
-                    <th className="p-3 text-sm md:text-base">Sent Date</th>
-                    <th className="p-3 text-sm md:text-base">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {campaigns.map((campaign) => (
-                    <tr key={campaign.id} className="border-t">
-                      <td className="p-3 text-sm md:text-base">{campaign.name}</td>
-                      <td className="p-3 text-sm md:text-base">
-                        <span
-                          className={`px-2 py-1 rounded ${
-                            campaign.status === "Scheduled"
-                              ? "bg-yellow-100 text-yellow-800"
-                              : "bg-green-100 text-green-800"
-                          }`}
-                        >
-                          {campaign.status}
-                        </span>
-                      </td>
-                      <td className="p-3 text-sm md:text-base">
-                        {campaign.sentDate}
-                      </td>
-                      <td className="p-3 text-sm md:text-base flex flex-wrap gap-2">
-                        {/* <button
-                          onClick={() => navigate(`/campaign/${campaign._id}`)}
-                          className="bg-blue-600 text-white px-2 py-1 rounded shadow hover:bg-blue-700"
-                        >
-                          View
-                        </button> */}
-                        {/* <button
-                          onClick={() =>
-                            alert("Rescheduling not implemented yet!")
-                          }
-                          className="bg-yellow-500 text-white px-2 py-1 rounded shadow hover:bg-yellow-600"
-                        >
-                          Reschedule
-                        </button> */}
-                        <button
-                          onClick={() => alert("Campaign deleted!")}
-                          className="bg-red-500 text-white px-2 py-1 rounded shadow hover:bg-red-600"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {campaigns.map((campaign) => (
+                <div
+                  key={campaign.id}
+                  className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition transform hover:scale-105 text-gray-200 border border-gray-700"
+                >
+                  <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+                    🎯 <span className="text-blue-400">{campaign.name}</span>
+                  </h3>
+                  <p
+                    className={`text-sm mb-4 px-2 py-1 rounded flex items-center gap-2 ${
+                      campaign.status === "Scheduled"
+                        ? "bg-yellow-500 bg-opacity-20 text-yellow-300"
+                        : "bg-green-500 bg-opacity-20 text-green-300"
+                    }`}
+                  >
+                    {campaign.status === "Scheduled" ? (
+                      <GiSandsOfTime />
+                    ) : (
+                      <GiCheckMark />
+                    )}
+                    {campaign.status}
+                  </p>
+                  <p className="text-sm mb-2">
+                    📅 Sent Date:{" "}
+                    <span className="font-medium text-gray-300">
+                      {campaign.sentDate || "N/A"}
+                    </span>
+                  </p>
+                  <div className="flex justify-end gap-3">
+                    <button
+                      onClick={() => alert("View functionality coming soon!")}
+                      className="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-md shadow-sm hover:shadow-md transform hover:scale-105 transition duration-200"
+                    >
+                      <FaEye />
+                      View
+                    </button>
+                    <button
+                      onClick={() => alert("Campaign deleted!")}
+                      className="flex items-center gap-2 bg-red-600 text-white px-3 py-2 rounded-md shadow-sm hover:shadow-md transform hover:scale-105 transition duration-200"
+                    >
+                      <FaTrash />
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center">
-              No campaigns found. Start by creating a new campaign!
+            <p className="text-gray-400 text-center">
+              🤔 No campaigns found. Start by creating a new campaign!
             </p>
           )}
         </div>
