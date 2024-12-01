@@ -8,18 +8,18 @@ This documentation will guide you through MailZapp's features, setup instruction
 
 ## 📜 Table of Contents
 
-1. [Introduction](#introduction)
-2. [Features](#features)
-   - [AI-Generated Emails](#ai-generated-emails)
-   - [Pay-Per-Use Pricing](#pay-per-use-pricing)
-   - [Actionable Insights](#actionable-insights)
-   - [Automation with Kestra](#automation-with-kestra)
-3. [Tech Stack](#tech-stack)
-4. [How to Run the Project](#how-to-run-the-project)
+
+1. [Introduction](#-introduction)
+2. [Features](#-features)
+   - [AI-Generated Emails](#1-🤖-ai-generated-emails)
+   - [Pay-Per-Use Pricing](#2-💸-pay-per-use-pricing)
+   - [Actionable Insights](#3-📊-actionable-insights)
+   - [Automation with Kestra](#4-⚙️-automation-with-kestra)
+3. [Tech Stack](#⚙️-tech-stack)
+4. [How to Run the Project](#🚀-how-to-run-the-project)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Running the Project](#running-the-project)
-
 ---
 
 ## ✨ Introduction
