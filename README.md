@@ -113,13 +113,13 @@ Before running **MailZapp** locally, make sure you have the following installed 
 
 ---
 
-### ▶️ Running the Project
+### Running the Project
 
 1. **Start the Backend**
+   This will start the Express server at http://localhost:5000.
    Run the following command in the root directory:
    ```bash
    npm run dev
-   This will start the Express server at http://localhost:5000.
 
 2. **Start the Frontend**
    Navigate to the client directory and run:
