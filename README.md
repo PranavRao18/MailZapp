@@ -20,6 +20,7 @@ This documentation will guide you through MailZapp's features, setup instruction
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Running the Project](#running-the-project)
+5. [The Team](#👥-the-team)
 ---
 
 ## ✨ Introduction
@@ -150,6 +151,22 @@ This React app will run at http://localhost:3000.
 
 3 **Start Kestra Automation**
 Ensure your Kestra instance is running and properly configured. Refer to the [Kestra Documentation](https://kestra.io/) for setup details.
+
+## 👥 The Team
+
+### 1. [**Pranav Rao**](https://github.com/PranavRao18)
+   - **Role**: Backend Developer  
+   - **Skills**: Node.js, Express.js, MongoDB, AI Integration
+   - **About**: Pranav is a backend developer focused on building robust and scalable server-side applications.
+   - [GitHub Profile](https://github.com/PranavRao18)  
+   - [LinkedIn Profile](https://www.linkedin.com/in/pranav-rao-b00926223/)
+
+### 2. [**Athmika S**](https://github.com/athmika26)
+   - **Role**: Frontend Developer 
+   - **Skills**: React.js, Tailwind CSS
+   - **About**: Athmika is passionate about creating engaging, user-friendly web experiences.
+   - [GitHub Profile](https://github.com/athmika26)  
+   - [LinkedIn Profile](https://www.linkedin.com/in/athmika-s-807617271/)
 
 
 
