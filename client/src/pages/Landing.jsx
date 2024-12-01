@@ -47,6 +47,7 @@ const Landing = () => {
 
       {/* Hero Section */}
       <main className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-12 relative">
+
         <h1 className="text-6xl md:text-7xl font-extrabold mb-3">MailZapp</h1>
         <h2 className="text-4xl font-extrabold mb-6">Revolutionize Your Email Campaigns with AI</h2>
         <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-10">
