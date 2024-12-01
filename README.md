@@ -163,7 +163,7 @@ Ensure your Kestra instance is running and properly configured. Refer to the [Ke
 ![Screenshot (340)](https://github.com/user-attachments/assets/e7a6529b-d6ea-44f2-b616-096ca202f9a8)
 ![Screenshot (341)](https://github.com/user-attachments/assets/0680c1c9-1ef1-4559-95bc-b4e438d9c0a0)
 
-## Sumission video
+## Submission video
 [Youtube video link](https://www.youtube.com/watch?v=ai3feOKX9j0)
 
 ## The Team!
