@@ -125,7 +125,7 @@ Before running **MailZapp** locally, make sure you have the following installed 
    Navigate to the client directory and run:
    ```bash
    npm start
-  This React app will run at http://localhost:3000.
+This React app will run at http://localhost:3000.
 
 3 **Start Kestra Automation**
 Ensure your Kestra instance is running and properly configured. Refer to the [Kestra Documentation](https://kestra.io/) for setup details.
