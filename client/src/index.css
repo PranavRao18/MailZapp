@@ -12,3 +12,15 @@
   scroll-behavior: smooth;
   /* color-scheme: dark; */
 }
+
+.bgimg{
+  background-image: url("/MAILZAPP.png");
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: -10px;
+  z-index: 0;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

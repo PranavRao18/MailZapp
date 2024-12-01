@@ -12,22 +12,21 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-black text-white relative overflow-hidden">
-      {/* Random Background Icons */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-60 left-20 text-yellow-500 opacity-80">
-          <FaEnvelopeOpen size={50} />
-        </div>
-        <div className="absolute top-40 right-10 text-pink-500 opacity-80">
+    <div className="bg-[#111] text-white relative overflow-hidden">
+      <div className="bgimg z-10">
+        {/* <div className="absolute text-yellow-500 opacity-80"> */}
+          {/* <img src="/MAILZAPP.png" className="bgimg"/> */}
+        {/* </div> */}
+        {/* <div className="absolute top-[700px] right-[500px] text-pink-500 opacity-80">
           <FaBolt size={50} />
         </div>
-        <div className="absolute top-20 right-40 text-yellow-500 opacity-80">
+        <div className="absolute top-60 right-[400px] text-yellow-500 opacity-80">
           <FaGlobe size={50} />
-        </div>
+        </div> */}
       </div>
 
       {/* Navbar */}
-      <header className="p-4 sticky top-0 bg-black shadow-lg z-10">
+      <header className="p-4 sticky top-0 shadow-lg">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-3xl font-extrabold tracking-wide">MailZapp</h1>
           <nav className="hidden md:flex space-x-6">

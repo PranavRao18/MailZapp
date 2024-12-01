@@ -15,21 +15,21 @@ const Pricing = () => {
       <div className="flex flex-wrap justify-center gap-8">
         <PricingCard
           title="Basic"
-          price="$10/month"
+          price="Rs 100/month"
           features={["Up to 100 emails/month", "Basic templates", "Email automation"]}
           buttonText="Start Free Trial"
           animationDelay={0}
         />
         <PricingCard
           title="Pro"
-          price="$25/month"
+          price="Rs 300/month"
           features={["Up to 1000 emails/month", "Advanced templates", "AI-powered insights", "Priority support"]}
           buttonText="Get Started"
           animationDelay={0.3}
         />
         <PricingCard
           title="Enterprise"
-          price="$50/month"
+          price="Rs 500/month"
           features={["Unlimited emails", "Custom templates", "Dedicated account manager", "Advanced analytics"]}
           buttonText="Contact Us"
           animationDelay={0.6}
