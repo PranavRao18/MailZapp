@@ -8,12 +8,10 @@ const AuthPage = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -33,13 +31,12 @@ const AuthPage = () => {
 
       const data = response.data;
 
-      // Handle login success
       if (isLogin) {
-        localStorage.setItem("token", data.token); // Store JWT token
-        navigate("/dashboard"); // Redirect to dashboard
+        localStorage.setItem("token", data.token);
+        navigate("/dashboard");
       } else {
         alert("Registration successful! Please log in.");
-        setIsLogin(true); // Switch to login mode
+        setIsLogin(true);
       }
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
@@ -47,15 +44,20 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-900 p-4">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-white mb-6">
-          {isLogin ? "Login to MailZapp" : "Create an Account"}
+    <div className="h-screen flex items-center justify-center bg-black">
+      <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-500 to-indigo-700 blur-xl opacity-30 rounded-lg"></div>
+        <h2 className="text-3xl font-bold text-center text-white mb-6">
+          {isLogin ? "Welcome Back to MailZapp!" : "Join the MailZapp Community"}
         </h2>
 
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {error && (
+          <p className="text-red-500 text-center bg-red-900 bg-opacity-20 py-2 px-4 rounded mb-4">
+            {error}
+          </p>
+        )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="relative">
           {!isLogin && (
             <div className="mb-4">
               <label className="block text-gray-300 mb-2" htmlFor="name">
@@ -66,7 +68,7 @@ const AuthPage = () => {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+                className="w-full bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring-4 focus:ring-purple-500 transition"
                 placeholder="Your Name"
               />
             </div>
@@ -81,7 +83,7 @@ const AuthPage = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+              className="w-full bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring-4 focus:ring-purple-500 transition"
               placeholder="Your Email"
             />
           </div>
@@ -95,23 +97,23 @@ const AuthPage = () => {
               type="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+              className="w-full bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring-4 focus:ring-purple-500 transition"
               placeholder="Your Password"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg shadow hover:bg-blue-700 transform transition duration-150 ease-in-out"
+            className="w-full bg-purple-600 text-white py-3 rounded-lg shadow-lg hover:bg-purple-700 transform transition duration-150 ease-in-out hover:scale-105"
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>
         </form>
 
-        <div className="text-center mt-4">
+        <div className="text-center mt-6 relative">
           <button
             onClick={() => setIsLogin(!isLogin)}
-            className="text-blue-400 hover:underline"
+            className="text-purple-400 hover:text-purple-300 hover:underline transition"
           >
             {isLogin
               ? "Don't have an account? Sign Up"
