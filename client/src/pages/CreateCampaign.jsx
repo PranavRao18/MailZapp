@@ -27,7 +27,7 @@ const CreateCampaign = () => {
 
     setIsGenerating(true);
     try {
-      const response = await axiosInstance.post("/ai/generate", {
+      const response = await axiosInstance.post("campaigns/ai/generate", {
         prompt: aiPrompt,
       });
       setEmailContent(response.data.content);

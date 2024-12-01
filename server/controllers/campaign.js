@@ -88,7 +88,6 @@ const getAllCampaigns = async (req, res) => {
 };
 
 
-// AI Content Generation
 const generateAIContent = async (req, res) => {
     try {
         const { prompt } = req.body;
@@ -97,13 +96,38 @@ const generateAIContent = async (req, res) => {
             return res.status(400).json({ message: "AI prompt is required." });
         }
 
-        // Call to AI API (e.g., OpenAI)
-        const generatedContent = `This is a placeholder content generated using AI for prompt: "${prompt}"`;
+        // Call to Groq API for AI content generation
+        const groqResponse = await axios.post(
+            "https://api.groq.com/openai/v1/chat/completions", // Replace with Groq's AI generation endpoint
+            {
+                messages: [
+                    {
+                        "role": "system",
+                        "content": "Provide only the body of an email for"
+                    },
+                    {
+                        "role": "user",
+                        "content": "Explain the importance of fast language models"
+                    }],
+                model: "llama3-8b-8192"
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${process.env.GROQ_API_KEY}`, // Replace with your Groq API key
+                },
+            }
+        );
+        const generatedContent = groqResponse.data.choices[0].message.content; // Assuming Groq returns the generated content in the 'content' field
         res.status(200).json({ content: generatedContent });
+
     } catch (error) {
         console.error("Error generating AI content:", error);
         res.status(500).json({ message: "Internal server error." });
     }
 };
+
+module.exports = generateAIContent;
+
 
 module.exports = { createCampaign, getAllCampaigns, generateAIContent };
