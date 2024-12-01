@@ -15,6 +15,6 @@ router.post("/", protect, createCampaign);
 router.get("/", protect, getAllCampaigns);
 
 // Route for AI-generated email content
-router.post("/ai/generate", protect, generateAIContent);
+router.post("/ai/generate", generateAIContent);
 
 module.exports = router;
