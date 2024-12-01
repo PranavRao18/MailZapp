@@ -47,7 +47,7 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-900">
+    <div className="h-screen flex items-center justify-center bg-gray-900 p-4">
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-white mb-6">
           {isLogin ? "Login to MailZapp" : "Create an Account"}
@@ -66,7 +66,7 @@ const AuthPage = () => {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
+                className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
                 placeholder="Your Name"
               />
             </div>
@@ -81,7 +81,7 @@ const AuthPage = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
+              className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
               placeholder="Your Email"
             />
           </div>
@@ -92,17 +92,17 @@ const AuthPage = () => {
             </label>
             <input
               id="password"
-                type="password"
+              type="password"
               value={formData.password}
               onChange={handleChange}
-                className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3"
-                placeholder="Your Password"
+              className="w-full border-gray-600 bg-gray-700 text-gray-200 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+              placeholder="Your Password"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg shadow hover:bg-blue-700"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg shadow hover:bg-blue-700 transform transition duration-150 ease-in-out"
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>

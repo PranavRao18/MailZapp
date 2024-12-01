@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom"; // Import Link for home navigation
+import { useNavigate, Link } from "react-router-dom";
 import axiosInstance from "../axiosInstance";
-import { FaCog, FaPlus, FaTrash, FaEye, FaHome } from "react-icons/fa"; // Font Awesome icons
-import { GiCheckMark, GiSandsOfTime } from "react-icons/gi"; // Creative icons
+import { FaCog, FaPlus, FaTrash, FaEye, FaHome } from "react-icons/fa";
+import { GiCheckMark, GiSandsOfTime } from "react-icons/gi";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -37,8 +37,8 @@ const Dashboard = () => {
     <div
       className="min-h-screen bg-black text-gray-200 flex flex-col"
       style={{
-        backgroundImage: "none", // Fully dark background
-        backgroundColor: "#000000", // Pure black
+        backgroundImage: "none",
+        backgroundColor: "#000000",
       }}
     >
       {/* Header */}
@@ -89,7 +89,7 @@ const Dashboard = () => {
           ) : error ? (
             <p className="text-red-400 text-center">❌ {error}</p>
           ) : campaigns.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {campaigns.map((campaign) => (
                 <div
                   key={campaign.id}

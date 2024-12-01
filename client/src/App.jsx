@@ -11,6 +11,7 @@ import CreateCampaign from "./pages/CreateCampaign";
 import Pricing from "./pages/Pricing"; 
 import About from "./pages/About";
 import EmailSettings from "./pages/Settings";
+import ContactUs from "./pages/ContactUs";
 
 const App = () => {
   return (
@@ -35,6 +36,8 @@ const App = () => {
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/settings" element={<EmailSettings />} />
+                <Route path="/contact-us" element={<ContactUs />} />
+
               </Routes>
             </div>
           }

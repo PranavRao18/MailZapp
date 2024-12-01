@@ -1,4 +1,3 @@
-// Pricing.js
 import React from "react";
 import { motion } from "framer-motion"; // Importing framer-motion for animations
 import { Link } from "react-router-dom"; // Import Link for navigation
@@ -58,11 +57,19 @@ const PricingCard = ({ title, price, features, buttonText, animationDelay }) => 
         ))}
       </ul>
       {/* Wrap the button inside the Link component */}
-      <Link to="/auth">
-        <button className="bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-6 rounded-lg font-semibold shadow-lg transform hover:scale-105 transition duration-200">
-          {buttonText}
-        </button>
-      </Link>
+      {title === "Enterprise" ? (
+        <Link to="/contact-us">
+          <button className="bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-6 rounded-lg font-semibold shadow-lg transform hover:scale-105 transition duration-200">
+            {buttonText}
+          </button>
+        </Link>
+      ) : (
+        <Link to="/auth">
+          <button className="bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-6 rounded-lg font-semibold shadow-lg transform hover:scale-105 transition duration-200">
+            {buttonText}
+          </button>
+        </Link>
+      )}
     </motion.div>
   );
 };
