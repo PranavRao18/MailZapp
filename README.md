@@ -152,6 +152,8 @@ This React app will run at http://localhost:3000.
 3 **Start Kestra Automation**
 Ensure your Kestra instance is running and properly configured. Refer to the [Kestra Documentation](https://kestra.io/) for setup details.
 
+---
+
 ## 👥 The Team
 
 ### 1. [**Pranav Rao**](https://github.com/PranavRao18)
