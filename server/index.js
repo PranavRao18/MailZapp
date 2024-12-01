@@ -3,6 +3,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const campaignRoutes = require("./routes/campaign");
+const emailRoutes = require("./routes/email")
 
 require('dotenv').config();
 
@@ -19,6 +20,7 @@ app.use(cors()); // Enables CORS for all origins
 // Routes
 app.use('/auth', authRoutes);
 app.use("/campaigns", campaignRoutes);
+app.use("/users", emailRoutes);
 
 // Start Server
 app.listen(PORT, () => {
