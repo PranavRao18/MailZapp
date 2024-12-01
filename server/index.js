@@ -15,7 +15,7 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(cors()); // Enables CORS for all origins
+app.use(cors());
 
 // Routes
 app.use('/auth', authRoutes);
