@@ -11,17 +11,17 @@ This documentation will guide you through MailZapp's features, setup instruction
 
 1. [Introduction](#Introduction)
 2. [Features](#Features)
-   - [AI-Generated Emails](#1.-ai-generated-emails)
-   - [Pay-Per-Use Pricing](#2.-pay-per-use-pricing)
-   - [Actionable Insights](#3.-actionable-insights)
-   - [Automation with Kestra](#4.--automation-with-kestra)
-3. [Tech Stack](#⚙️-tech-stack)
-4. [How to Run the Project](#🚀-how-to-run-the-project)
+   - [AI-Generated Emails](#ai-generated-emails)
+   - [Pay-Per-Use Pricing](#pay-per-use-pricing)
+   - [Actionable Insights](#actionable-insights)
+   - [Automation with Kestra](#automation-with-kestra)
+3. [Tech Stack](#tech-stack)
+4. [How to Run the Project](#how-to-run-the-project)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Running the Project](#running-the-project)
 5. [Screenshots](#screenshots)
-6. [The Team](#👥-the-team)
+6. [The Team](#the-team)
 ---
 
 ## Introduction
@@ -162,7 +162,7 @@ Ensure your Kestra instance is running and properly configured. Refer to the [Ke
 ![Screenshot (340)](https://github.com/user-attachments/assets/e7a6529b-d6ea-44f2-b616-096ca202f9a8)
 ![Screenshot (341)](https://github.com/user-attachments/assets/0680c1c9-1ef1-4559-95bc-b4e438d9c0a0)
 
-## 👥 The Team!
+## The Team!
 
 
 ### 1. [**Pranav Rao**](https://github.com/PranavRao18)
