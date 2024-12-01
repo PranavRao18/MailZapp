@@ -21,7 +21,8 @@ This documentation will guide you through MailZapp's features, setup instruction
    - [Installation](#installation)
    - [Running the Project](#running-the-project)
 5. [Screenshots](#screenshots)
-6. [The Team](#the-team)
+6. [Submission video](#video)
+7. [The Team](#the-team)
 ---
 
 ## Introduction
@@ -161,6 +162,9 @@ Ensure your Kestra instance is running and properly configured. Refer to the [Ke
 ![Screenshot (339)](https://github.com/user-attachments/assets/204e494c-b30a-4aa4-8c51-5c10ad48ce4a)
 ![Screenshot (340)](https://github.com/user-attachments/assets/e7a6529b-d6ea-44f2-b616-096ca202f9a8)
 ![Screenshot (341)](https://github.com/user-attachments/assets/0680c1c9-1ef1-4559-95bc-b4e438d9c0a0)
+
+## Sumission video
+[Youtube video link](https://www.youtube.com/watch?v=ai3feOKX9j0)
 
 ## The Team!
 
