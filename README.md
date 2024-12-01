@@ -23,7 +23,7 @@ This documentation will guide you through MailZapp's features, setup instruction
 5. [The Team](#👥-the-team)
 ---
 
-## ✨ Introduction
+## ✨ Introduction {#-introduction}
 
 Running a small business comes with countless responsibilities, leaving little time for crafting impactful email marketing campaigns. Traditional tools are often too complex, time-consuming, or expensive for small-scale business owners. That’s where MailZapp comes in, transforming email marketing into a simple, stress-free, and highly effective experience. 🚀
 
@@ -50,7 +50,7 @@ Take the stress out of email marketing with MailZapp and focus on what you do be
 
 ---
 
-## 🛠️ Features
+## 🛠️ Features {#-features}
 
 ### 1. 🤖 **AI-Generated Emails**
 MailZapp uses **AI** to generate personalized, professional email content instantly. Our AI algorithms understand your audience's preferences and create compelling emails that are more likely to generate engagement. 📈
