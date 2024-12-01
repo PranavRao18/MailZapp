@@ -46,7 +46,7 @@ const createCampaign = async (req, res) => {
             smtp_password: user.emailSettings.smtpPassword,
             recipient: recipients.join(", "),
             subject,
-            body: content,
+            body: "Dear all, We are excited to invite you to participate in our upcoming hackathon, a 24-hour coding marathon where you will have the opportunity to showcase your skills, learn from others, and win exciting prizes.",
             delay: delayInSeconds,
             campaign_id: newCampaign._id.toString()
         };
@@ -89,11 +89,11 @@ const generateAIContent = async (req, res) => {
                 messages: [
                     {
                         "role": "system",
-                        "content": "Provide only the body of an email for"
+                        "content": "Provide only the body of an email for given prompts. Dont give anything else. Only the body of an email. Dont enclose them in inverted commas. You can only use commas and no other special characters."
                     },
                     {
                         "role": "user",
-                        "content": "Explain the importance of fast language models"
+                        "content": prompt
                     }],
                 model: "llama3-8b-8192"
             },

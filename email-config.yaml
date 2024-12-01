@@ -1,0 +1,71 @@
+id: python-example
+namespace: io.kestra.example
+
+inputs:
+  - id: smtp_email
+    type: STRING
+  - id: smtp_password
+    type: STRING
+  - id: recipient
+    type: STRING
+  - id: subject
+    type: STRING
+  - id: body
+    type: STRING
+  - id: delay
+    type: INT
+  - id: campaign_id
+    type: STRING
+
+tasks:
+  - id: wait_with_delay
+    type: io.kestra.plugin.scripts.python.Script
+    script: |
+      import time
+
+      def wait(delay):
+          time.sleep(delay)
+
+      delay = {{inputs.delay}}
+      wait(delay)
+
+  - id: send_emails
+    type: io.kestra.plugin.scripts.python.Script
+    script: |
+      import smtplib
+      from email.mime.text import MIMEText
+
+      def send_email(smtp_email, smtp_password, recipient, subject, body):
+          msg = MIMEText(body)
+          msg["Subject"] = subject
+          msg["From"] = smtp_email
+          msg["To"] = recipient
+
+          with smtplib.SMTP("smtp.gmail.com", 587) as server:
+              server.starttls()
+              server.login(smtp_email, smtp_password)
+              server.sendmail(smtp_email, [recipient], msg.as_string())
+
+          print(f"Email sent to {recipient} successfully.")
+
+      smtp_email = "{{inputs.smtp_email}}"
+      smtp_password = "{{inputs.smtp_password}}"
+      recipient_string = "{{inputs.recipient}}"
+      subject = "{{inputs.subject}}"
+      body = "{{inputs.body}}"
+      campaign_id = "{{inputs.campaign_id}}"
+
+      recipients = recipient_string.split(',')
+      for recipient in recipients:
+          send_email(smtp_email, smtp_password, recipient, subject, body)
+
+  - id: update_campaign_status
+    type: io.kestra.plugin.core.http.Request
+    uri: http://127.0.0.1:3000/users/kestra-webhook
+    options:
+      basicAuthUser: admin
+      basicAuthPassword: admin
+    method: POST
+    contentType: application/json
+    formData:
+      campaign_id: campaign_id
